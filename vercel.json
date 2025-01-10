@@ -6,8 +6,11 @@
       "use": "@vercel/node"
     },
     {
-      "src": "dist/**",
-      "use": "@vercel/static"
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist"
+      }
     }
   ],
   "routes": [
@@ -16,9 +19,7 @@
       "dest": "/api/index.ts"
     },
     {
-      "src": "/(.*)",
-      "dest": "/dist/$1",
-      "continue": true
+      "handle": "filesystem"
     },
     {
       "src": "/(.*)",

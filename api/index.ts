@@ -56,6 +56,16 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'ok' });
 });
 
+// 添加根路由处理
+app.get('/', (req, res) => {
+  res.json({ message: 'API is running' });
+});
+
+// 添加通配符路由来处理所有未匹配的 API 请求
+app.use('/api/*', (req, res) => {
+  res.status(404).json({ error: 'API endpoint not found' });
+});
+
 // 其他 API 路由...
 // 从您的原始服务器代码复制其他路由处理程序
 
