@@ -6,8 +6,12 @@
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": ".",
+    "paths": {
+      "@db/*": ["db/*"]
+    }
   },
-  "include": ["api/**/*"],
+  "include": ["api/**/*", "db/**/*"],
   "exclude": ["node_modules"]
 } 
