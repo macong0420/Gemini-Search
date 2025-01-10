@@ -51,11 +51,16 @@ app.get('/api/search', async (req, res) => {
   }
 });
 
+// 添加健康检查路由
+app.get('/api/health', (req, res) => {
+  res.json({ status: 'ok' });
+});
+
 // 其他 API 路由...
 // 从您的原始服务器代码复制其他路由处理程序
 
 // 错误处理中间件
-app.use((err: Error, req: express.Request, res: express.Response, next: express.NextFunction) => {
+app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
   console.error(err.stack);
   res.status(500).json({ error: 'Something broke!' });
 });
