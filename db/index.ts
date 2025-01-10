@@ -8,8 +8,17 @@ if (!process.env.DATABASE_URL) {
   );
 }
 
+// 针对不同环境的连接配置
+const connectionConfig = process.env.VERCEL 
+  ? {
+      connectionString: process.env.DATABASE_URL,
+    }
+  : {
+      connectionString: process.env.DATABASE_URL,
+      webSocket: ws,
+    };
+
 export const db = drizzle({
-  connection: process.env.DATABASE_URL,
-  schema,
-  ws: ws,
+  connection: connectionConfig,
+  schema
 });
